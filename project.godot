@@ -14,6 +14,11 @@ config/name="Godot_OETAM_2D_Oficina_01_12_2022"
 run/main_scene="res://Inicio.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1280
+window/size/height=720
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
