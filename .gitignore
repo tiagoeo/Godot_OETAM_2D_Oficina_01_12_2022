@@ -1,8 +1,12 @@
+# Builds
+/[Bb]uilds/
+
 # Godot 4+ specific ignores
 .godot/
 
 # Godot-specific ignores
 .import/
+*.import
 export.cfg
 export_presets.cfg
 
