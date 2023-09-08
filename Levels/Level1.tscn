@@ -77,3 +77,17 @@ position = Vector2( 198, 482 )
 [node name="AudioLevel" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 autoplay = true
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Carregamento" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TimerCarregamento" type="Timer" parent="UI/Carregamento"]
+
+[node name="ProgressBarCarregamento" type="ProgressBar" parent="UI/Carregamento"]
+margin_right = 4.0
+margin_bottom = 14.0

@@ -7,6 +7,9 @@ var mover = Vector2()
 onready var _player_sprite = get_node("Sprite")
 onready var _player_audio_pular = get_node("AudioPular")
 
+func _ready() -> void:
+	add_to_group("load")
+
 func _process(delta):
 	# Movimentação horizontal
 	var inserir_direcao = Vector2()
@@ -37,3 +40,7 @@ func _process(delta):
 
 	# Movimentar o personagem
 	mover = move_and_slide(mover, Vector2(0, -1))
+
+
+func _on_Sair_pressed() -> void:
+	get_tree().call_group("load", "load_cena_menu")
