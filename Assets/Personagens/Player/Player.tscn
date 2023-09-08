@@ -94,6 +94,8 @@ animations = [ {
 height = 10.0
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -139,7 +141,7 @@ action = "ui_up"
 visibility_mode = 1
 
 [node name="Sair" type="TouchScreenButton" parent="UI"]
-position = Vector2( 2042, 15 )
+position = Vector2( 2042, 71 )
 scale = Vector2( 4.52083, 4.6875 )
 normal = ExtResource( 10 )
 pressed = ExtResource( 11 )

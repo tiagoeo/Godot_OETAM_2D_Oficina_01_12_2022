@@ -15,6 +15,9 @@ onready var carregamento = ui.get_node(@"Carregamento")
 onready var carregando_cronometro = carregamento.get_node(@"TimerCarregamento")
 onready var carregando_progresso = carregamento.get_node(@"ProgressBarCarregamento")
 
+onready var fim_game = ui.get_node(@"FimGame")
+onready var camera_fim_game = fim_game.get_node(@"CameraFimGame")
+
 onready var _audio_level = get_node("Audio/AudioLevel")
 
 var _menu = "res://GUI/Menu.tscn"
@@ -24,6 +27,8 @@ func _ready() -> void:
 	_audio_level.play()
 	add_to_group("load")
 	carregamento.hide()
+	fim_game.hide()
+	camera_fim_game.current = false
 	
 func interactive_load(loader) -> void:
 	while true:
@@ -39,6 +44,9 @@ func interactive_load(loader) -> void:
 			print("Erro no carregamento do level: " + str(status))
 			break
 
+func _on_TimerCarregamento_timeout():
+	loading_done(res_loader)
+
 func loading_done(loader) -> void:
 	loading_thread.wait_to_finish()
 	emit_signal("substituir_cena_principal", loader.get_resource())
@@ -53,9 +61,6 @@ func carregar_level(path) -> void:
 		#warning-ignore:return_value_discarded
 		loading_thread.start(self, "interactive_load", res_loader)
 
-func _on_TimerCarregamento_timeout():
-	loading_done(res_loader)
-
 func load_cena_menu() -> void:
 	carregamento.show()
 	carregar_level(_menu)
@@ -64,6 +69,9 @@ func load_cena_next_level() -> void:
 	carregamento.show()
 	carregar_level(_next_level)
 
+
 func _on_FimLevel_body_entered(body):
 	if body.name == "Player":
-		load_cena_next_level()
+		fim_game.show()
+		camera_fim_game.current = true
+		print("Fim game")
